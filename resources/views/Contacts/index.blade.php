@@ -1,56 +1,38 @@
-@extends('layout.base')
-@section('content')
-{{-- use flowbite for the ui --}}
-<div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    Contact name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Email
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Phone
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Organization
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- loop through the contacts and display them -->
-            <!--check if the contacts is not empty -->
-            <!--use the isset() function to check if the contacts variable is not empty -->
-            {{-- @if (isset($contacts)) --}}
-            @if ($contacts->isEmpty())
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="px-6 py-4" colspan="4">
-                    No contacts found.
-                </td>
-            </tr>
-            @else
-            @foreach ($contacts as $contact)
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td class="px-6 py-4">
-                    {{-- display contact first_name from the fillable --}}
-                    {{ $contact->first_name }} {{ $contact->last_name }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ $contact->email }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ $contact->phone }}
-                </td>
-                <td class="px-6 py-4">
-                    {{-- contact organization --}}
-                    {{ $contact->organization->name }}
-                </td>
-            </tr>
-            @endforeach
-            @endif
-        </tbody>
-    </table>
-</div>
-@endSection
+<!-- resources/views/contacts/index.blade.php -->
+
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Contacts') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="p-6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Job Title</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($contacts as $contact)
+                            <tr>
+                                <td>{{ $contact->first_name }}</td>
+                                <td>{{ $contact->last_name }}</td>
+                                <td>{{ $contact->email }}</td>
+                                <td>{{ $contact->phone }}</td>
+                                <td>{{ $contact->job_title }}</td>
+                                <td>
+                                    <!-- Add action buttons here -->
+                                </td>
+                            </tr>
+                            @endforeach
+                            </tbo

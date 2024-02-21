@@ -12,7 +12,6 @@ class LeadsController extends Controller
      */
     public function index()
     {
-        //
         $leads = Leads::all();
         return view('leads.index', compact('leads'));
     }
@@ -22,8 +21,7 @@ class LeadsController extends Controller
      */
     public function create()
     {
-        //
-        return view('lead.create');
+        return view('leads.create');
     }
 
     /**
@@ -31,23 +29,20 @@ class LeadsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $request->validate(
-            [
-                'name' => 'required',
-                'email' => 'required|email',
-                'phone' => 'required',
-            ]
-        );
-        //create a new lead
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+        ]);
+
         Leads::create($request->all());
+
         $notification = array(
-            'message' => 'Request successful!',
+            'message' => 'Lead created successfully!',
             'alert-type' => 'success'
         );
-        //die and dump
-        //dd($request->all());
-        return redirect()->route('welcome')->with($notification);
+
+        return redirect()->route('leads.index')->with($notification);
     }
 
     /**
@@ -55,7 +50,7 @@ class LeadsController extends Controller
      */
     public function show(Leads $lead)
     {
-        //
+        return view('leads.show', compact('lead'));
     }
 
     /**
@@ -63,7 +58,7 @@ class LeadsController extends Controller
      */
     public function edit(Leads $lead)
     {
-        //
+        return view('leads.edit', compact('lead'));
     }
 
     /**
@@ -71,7 +66,20 @@ class LeadsController extends Controller
      */
     public function update(Request $request, Leads $lead)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+        ]);
+
+        $lead->update($request->all());
+
+        $notification = array(
+            'message' => 'Lead updated successfully!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('leads.index')->with($notification);
     }
 
     /**
@@ -79,6 +87,8 @@ class LeadsController extends Controller
      */
     public function destroy(Leads $lead)
     {
-        //
+        $lead->delete();
+
+        return redirect()->route('leads.index')->with('success', 'Lead deleted successfully');
     }
 }
