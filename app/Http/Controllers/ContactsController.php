@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contacts;
+use App\Models\Organizations;
 use Illuminate\Http\Request;
 
 class ContactsController extends Controller
@@ -45,9 +46,9 @@ class ContactsController extends Controller
             'organization_id' => 'required',
         ]);
         //store the request
-        Contact::create($request->all());
+        Contacts::create($request->all());
         //use the new contact to create a new organization
-        $contact = new Contact();
+        $contact = new Contacts();
         $contact->first_name = $request->first_name;
         $contact->last_name = $request->last_name;
         $contact->email = $request->email;
@@ -56,21 +57,21 @@ class ContactsController extends Controller
         $contact->organization_id = $request->organization_id;
         $contact->save();
         //redirect to the index page
-        return redirect()->route('contact.index');
+        return redirect()->route('contacts.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(contact $contact)
+    public function show(contacts $contact)
     {
         //show the contact
-        $contact = Contact::find($contact);
+        $contact = Contacts::find($contact);
         //use find or fail
-        $contact = Contact::findOrFail($contact);
+        $contact = Contacts::findOrFail($contact);
         //the difference between find and find or fail is that find or 
         //fail will throw an error if the contact is not found
-        return view('contact.show', ['contact' => $contact]);
+        return view('contacts.show', ['contact' => $contact]);
 
         //use a try catch block
         // try {
@@ -84,17 +85,17 @@ class ContactsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(contact $contact)
+    public function edit(contacts $contact)
     {
         //edit one contact
-        $contact = Contact::find($contact);
-        return view('contact.edit', ['contact' => $contact]);
+        $contact = Contacts::find($contact);
+        return view('contacts.edit', ['contact' => $contact]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, contact $contact)
+    public function update(Request $request, contacts $contact)
     {
         //update contact using the request by first validating the request
         $request->validate([
@@ -112,7 +113,7 @@ class ContactsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(contact $contact)
+    public function destroy(contacts $contact)
     {
         //delete the contact
         $contact->delete();

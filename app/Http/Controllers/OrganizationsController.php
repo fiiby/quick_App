@@ -49,7 +49,7 @@ class OrganizationsController extends Controller
      */
     public function show(Organizations $organization)
     {
-        return view('organizations.show', compact('organization'));
+        return view('organizations.show', compact('organizations'));
     }
 
     /**

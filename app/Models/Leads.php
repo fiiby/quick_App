@@ -21,3 +21,5 @@ class Leads extends Model
         return $this->belongsTo(User::class);
     }
 }
+
+

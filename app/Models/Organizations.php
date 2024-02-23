@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Contact;
+use App\Models\Contacts;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -12,6 +12,6 @@ class Organizations extends Model
     protected $fillable = ['name', 'industry', 'organize'];
     public function contacts()
     {
-        return $this->hasMany(Contacts::class);
+        return $this->hasMany(Contacts::class, 'organizations_contacts');
     }
 }
