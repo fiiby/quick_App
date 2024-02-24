@@ -13,6 +13,7 @@
                 <div class="p-6">
                     <table class="table">
                         <thead>
+                            
                             <tr>
                                 <th>Name</th>
                                 <th>Industry</th>
