@@ -5,25 +5,27 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OrganizationsResource\Pages;
 use App\Filament\Resources\OrganizationsResource\RelationManagers;
 use App\Models\Organizations;
-use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Components;
 use Filament\Resources\Resource;
-use Filament\Tables;
+// use Filament\Table;
 use Filament\Tables\Table;
+use Filament\Tables\Columns;
+use Filament\Tables\Actions;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class OrganizationsResource extends Resource
 {
-    protected static ?string $model = Organizations::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static ?string $model = Organizations::class;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Components\TextInput::make('name')->label('Name'),
+                Components\TextInput::make('industry')->label('Industry'),
+                Components\TextInput::make('organize')->label('Organize'),
             ]);
     }
 
@@ -31,26 +33,19 @@ class OrganizationsResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Columns\TextColumn::make('name')->label('Name'),
+                Columns\TextColumn::make('industry')->label('Industry'),
+                Columns\TextColumn::make('organize')->label('Organize'),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
+            ->defaultSort('id', 'asc')
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array
