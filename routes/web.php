@@ -13,15 +13,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::resource('/Leads', LeadsController::class);
+Route::resource('/Leads', LeadsController::class);
 
 Route::resource('/contacts', ContactsController::class);
 
-// // Route::get('/deals_stages', [Deals_StagesController::class, 'index'])
-// //     ->middleware(['auth', 'verified'])
-// //     ->name('deals_stages.index');
+// Route::get('/deals_stages', [Deals_StagesController::class, 'index'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('deals_stages.index');
 
-// Route::resource('/organizations', OrganizationsController::class);
+Route::resource('/organizations', OrganizationsController::class);
 
-// Route::resource('/deal', DealController::class);
+Route::resource('/deal', DealController::class);
 

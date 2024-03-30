@@ -13,13 +13,13 @@ class DealController extends Controller
     public function index()
     {
         $deals = Deal::all();
-        return view('deals.index', compact('deals'));
+        return view('deal.index', compact('deals'));
     }
 
     public function show($id)
     {
         $deal = Deal::findOrFail($id);
-        return view('deals.show', compact('deal'));
+        return view('deal.show', compact('deal'));
     }
 
     public function create()
@@ -27,7 +27,7 @@ class DealController extends Controller
         $organizations = Organizations::all();
         $contacts = Contacts::all();
         // $stages = Deals_Stages::all();
-        return view('deals.create', compact('organizations', 'contacts', 'stages'));
+        return view('deal.create', compact('organizations', 'contacts', 'stages'));
     }
 
     public function store(Request $request)
@@ -43,7 +43,7 @@ class DealController extends Controller
         ]);
 
         $deal = Deal::create($validatedData);
-        return redirect()->route('deals.show', $deal->id)->with('success', 'Deal created successfully');
+        return redirect()->route('deal.show', $deal->id)->with('success', 'Deal created successfully');
     }
 
     public function edit($id)
@@ -52,7 +52,7 @@ class DealController extends Controller
         $organizations = Organizations::all();
         $contacts = Contacts::all();
         // $stages = Deals_Stages::all();
-        return view('deals.edit', compact('deal', 'organizations', 'contacts', 'stages'));
+        return view('deal.edit', compact('deal', 'organizations', 'contacts', 'stages'));
     }
 
     public function update(Request $request, $id)
@@ -68,7 +68,7 @@ class DealController extends Controller
         ]);
 
         Deal::whereId($id)->update($validatedData);
-        return redirect()->route('deals.show', $id)->with('success', 'Deal updated successfully');
+        return redirect()->route('deal.show', $id)->with('success', 'Deal updated successfully');
     }
 
     public function destroy($id)

@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h1 class="h1">Edit Deal</h1>
     </x-slot>
-
+    @vite('resources/css/app.css')
     <div class="container mt-5">
         <form action="{{ route('deal.update', $deal->id) }}" method="POST">
             @csrf

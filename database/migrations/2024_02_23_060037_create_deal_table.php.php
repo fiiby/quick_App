@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('contact_id');
-            $table->unsignedBigInteger('stage');
+            // $table->unsignedBigInteger('stage');
             $table->decimal('value', 10, 2);
             $table->decimal('probability', 10, 2);
             $table->date('expected_close_date');

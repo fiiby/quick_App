@@ -10,6 +10,7 @@
                 </h2>
                 <form class="mt-4 space-y-4 lg:mt-5 md:space-y-5" action="{{ route('lead.store') }}" method="POST">
                     @csrf
+                    @vite('resources/css/app.css')
                     <div>
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your

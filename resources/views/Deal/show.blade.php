@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h1 class="h1">Deal Details</h1>
     </x-slot>
-
+    @vite('resources/css/app.css')
     <div class="container mt-5">
         <p>ID: {{ $deal->id }}</p>
         <p>Account ID: {{ $deal->account_id }}</p>

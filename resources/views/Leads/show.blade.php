@@ -1,7 +1,7 @@
 <!-- resources/views/leads/show.blade.php -->
 // use <x-layout>
     @extends('layouts.app')
-
+    @vite('resources/css/app.css')
     @section('content')
     <div class="container">
         <div class="row justify-content-center">

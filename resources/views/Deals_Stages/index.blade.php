@@ -1,4 +1,4 @@
-resources/views/stages/index.blade.php
+{{-- resources/views/stages/index.blade.php
 <x-app-layout>
     <x-slot name="header">
         <h1 class="text-2xl font-semibold leading-tight">Stages</h1>
@@ -6,7 +6,7 @@ resources/views/stages/index.blade.php
 
     <div class="py-6">
         <a href="{{ route('stages.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create Stage</a>
-
+        @vite('resources/css/app.css')
         <table class="table-auto mt-4">
             <thead>
                 <tr>
@@ -28,4 +28,4 @@ resources/views/stages/index.blade.php
             </tbody>
         </table>
     </div>
-</x-app-layout>
+</x-app-layout> --}}

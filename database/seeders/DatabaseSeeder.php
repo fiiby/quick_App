@@ -6,8 +6,8 @@ use Illuminate\Database\Seeder;
 // use App\Models\Contacts;
 // use App\Models\Organizations;
 use App\Models\Deal;
-use App\Models\Deals_Stages;
-// use App\Models\Leads;
+// use App\Models\Deals_Stages;
+use App\Models\Leads;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,9 +29,9 @@ public function run(): void
 Deal::factory()->times(10)->create();
 
  // Create 10 deal stages
-Deals_Stages::factory()->times(10)->create();
+// Deals_Stages::factory()->times(10)->create();
 
 // Generate fake leads
-// Leads::factory()->times(10)->create();
+Leads::factory()->times(10)->create();
 }
 }

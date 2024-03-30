@@ -3,7 +3,7 @@
         <h1 class="h1">Deals</h1>
         <a href="{{ route('deal.create') }}" class="btn btn-primary">Create Deal</a>
     </x-slot>
-
+    @vite('resources/css/app.css')
     <div class="container mt-5">
         <table class="table">
             <thead>

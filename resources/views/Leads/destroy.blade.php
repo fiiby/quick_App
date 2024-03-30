@@ -5,7 +5,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Delete Lead</div>
-
+                    @vite('resources/css/app.css')
                     <div class="card-body">
                         <p>Are you sure you want to delete this lead?</p>
                         <form action="{{ route('leads.destroy', $lead->id) }}" method="POST">
